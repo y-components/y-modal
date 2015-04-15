@@ -1,0 +1,146 @@
+.y-modal
+{
+    visibility: hidden;
+
+    transition: visibility .2s linear, opacity .2s;
+    text-align: center;
+
+    opacity: 0;
+}
+
+.y-modal_visible
+{
+    visibility: visible;
+
+    opacity: 1;
+}
+
+.y-modal__wrapper
+{
+    position: fixed;
+    z-index: 32700;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    overflow: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.y-modal__veil
+{
+    position: fixed;
+    z-index: 32000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    opacity: 0.3;
+    background: #000;
+}
+
+.y-modal__expander
+{
+    display: inline-block;
+
+    width: 0;
+    height: 100%;
+
+    vertical-align: middle;
+}
+
+.y-modal__content
+{
+    position: relative;
+    z-index: 1;
+
+    display: inline-block;
+
+    max-width: 400px;
+    margin: 30px 0;
+    padding: 20px;
+
+    transition: all .2s;
+    transform: scale(.8) translateZ(0);
+    -webkit-animation: toggle 0.2s;
+    animation: toggle 0.2s;
+    animation-direction: reverse;
+    text-align: left;
+    vertical-align: middle;
+
+    opacity: 0;
+    background: #fff;
+}
+
+.y-modal__content_visible
+{
+    transform: scale(1);
+    -webkit-animation: toggle 0.2s;
+    animation: toggle 0.2s;
+
+    opacity: 1;
+}
+
+
+@-webkit-keyframes showing {
+    from {
+        -webkit-transform: scale(0.8);
+
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: scale(1);
+
+        opacity: 1;
+    }
+}
+
+@keyframes toggle {
+    from {
+        transform: scale(0.8);
+
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+
+        opacity: 1;
+    }
+}
+
+.y-modal__close
+{
+    position: absolute;
+    top: 0;
+    right: -40px;
+
+    width: 25px;
+    height: 25px;
+
+    cursor: pointer;
+    transition: opacity .2s;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    text-align: center;
+
+    color: rgba(255, 255, 255, .7);
+}
+
+.y-modal__close:before
+{
+    font-family: Times New Roman, serif;
+    font-size: 36px;
+    line-height: 25px;
+
+    padding: 0 0 0 1px;
+
+    content: '+';
+}
+
+.y-modal__close:hover
+{
+    color: #fff;
+}
