@@ -12,5 +12,6 @@ __Notice:__ Demo files are not bundled or minified - so first load will be slow.
 npm install jspm http-server -g
 
 jspm install
+jspm bundle demo - index.jsx!
 npm run serve
 ```

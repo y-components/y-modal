@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "y-component button",
   "scripts": {
-    "serve": "http-server -p 8080 -o -c-1"
+    "serve": "http-server -p 8080 -c"
   },
   "repository": {
     "type": "git",
