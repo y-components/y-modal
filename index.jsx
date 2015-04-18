@@ -42,7 +42,8 @@ const YModal = React.createClass({
         if (window.TransitionEvent){
             //https://github.com/facebook/react/issues/2187
             this.getDOMNode().addEventListener('transitionend', function(e){
-                if (!e.target.classList.contains('y-modal')) return;
+                var classList = e.target.className.split(' ');
+                if (classList.indexOf('y-modal') === -1) return;
 
                 if (document.defaultView.getComputedStyle(this.getDOMNode(), null).getPropertyValue('visibility') === 'hidden') {
                     this.clearBody();
@@ -65,7 +66,8 @@ const YModal = React.createClass({
     },
 
     checkForClose: function(e){
-        if (e.target.classList.contains(this.wrapperCssClass)) {
+        var classList = e.target.className.split(' ');
+        if (classList.indexOf(this.wrapperCssClass) !== -1) {
             this.hide();
         }
     },
