@@ -6,6 +6,8 @@ const YModal = React.createClass({
     displayName: 'y-modal',
 
     getInitialState(){
+        this.wrapperCssClass = b('y-modal', 'wrapper');
+
         return {
             visible: false
         };
@@ -25,6 +27,20 @@ const YModal = React.createClass({
         this.setState({ visible: false });
     },
 
+    lockBody(){
+        this.body.style.overflow = 'hidden';
+    },
+
+    unlockBody(){
+        this.body.style.overflow = 'visible';
+    },
+
+    checkForClose: function(e){
+        if (e.target.classList.contains(this.wrapperCssClass)) {
+            this.hide();
+        }
+    },
+
     render(){
         const classes = b('y-modal', {
             theme: this.props.theme || 'normal',
@@ -33,26 +49,20 @@ const YModal = React.createClass({
 
         return (
             <div className={classes}>
-                <div className={b('y-modal', 'wrapper')}>
+                <div
+                    className={this.wrapperCssClass}
+                    onClick={this.checkForClose}>
                     <div className={b('y-modal', 'expander')} />
                     <div className={b('y-modal', 'content', { visible: this.state.visible })}>
                         { this.props.children }
                         <div
                             className={b('y-modal', 'close')}
-                            onClick={this.hide}></div>
+                            onClick={this.hide}/>
                     </div>
                 </div>
                 <div className={b('y-modal', 'veil')} />
             </div>
         );
-    },
-
-    lockBody(){
-        this.body.style.overflow = 'hidden';
-    },
-
-    unlockBody(){
-        this.body.style.overflow = 'visible';
     }
 });
 
