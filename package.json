@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "y-component button",
   "scripts": {
-    "serve": "http-server -p 8080 -c"
+    "serve": "http-server -p 8080 -c-1"
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
     "jspm",
     "y-component"
   ],
-  "author": "Vsevolod Strukchinsky <floatdrop@gmail.com>",
+  "author": "Anton Grischenko <f0rmateg@yandex.ru>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/y-components/y-modal/issues"

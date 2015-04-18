@@ -1,61 +1,62 @@
-var React = require('react');
-var b = require('b_');
+import React from 'react';
+import b from 'b_';
+import Style from './index.css!';
 
-var Style = require('./index.css!');
+const YModal = React.createClass({
+    displayName: 'y-modal',
 
-//todo
-var body = document.querySelector('body');
-
-var YModal = {
-	displayName: 'y-modal',
-
-	getInitialState: function() {
+    getInitialState(){
         return {
             visible: false
         };
     },
 
-	show: function(){
-		this.__lockBody();
-		this.setState({ visible: true });
-	},
+    componentDidMount(){
+        this.body = document.body;
+    },
 
-	hide: function(){
-		this.__unlockBody();
-		this.setState({ visible: false });
-	},
+    show(){
+        this.lockBody();
+        this.setState({ visible: true });
+    },
 
-	render: function () {
-		var classes = b('y-modal', {
-			theme: this.props.theme || 'normal',
-			visible: this.state.visible
-		});
+    hide(){
+        this.unlockBody();
+        this.setState({ visible: false });
+    },
 
-		return (
-			<div className={classes}>
-				<div className={b('y-modal', 'wrapper')}>
-					<div className={b('y-modal', 'expander')} />
-					<div className={b('y-modal', 'content', { visible: this.state.visible })}>
-						{ this.props.children }
-						<div
-							className={b('y-modal', 'close')}
-							onClick={this.hide}></div>
-					</div>
-				</div>
-				<div className={b('y-modal', 'veil')} />
-			</div>
-		);
-	},
+    render(){
+        const classes = b('y-modal', {
+            theme: this.props.theme || 'normal',
+            visible: this.state.visible
+        });
 
-	__lockBody: function(){
-		body.style.overflow = 'hidden';
-	},
+        return (
+            <div className={classes}>
+                <div className={b('y-modal', 'wrapper')}>
+                    <div className={b('y-modal', 'expander')} />
+                    <div className={b('y-modal', 'content', { visible: this.state.visible })}>
+                        { this.props.children }
+                        <div
+                            className={b('y-modal', 'close')}
+                            onClick={this.hide}></div>
+                    </div>
+                </div>
+                <div className={b('y-modal', 'veil')} />
+            </div>
+        );
+    },
 
-	__unlockBody: function(){
-		body.style.overflow = 'visible';
-	}
-};
+    lockBody(){
+        this.body.style.overflow = 'hidden';
+    },
 
-module.exports = React.createClass(YModal);
-module.exports.Style = Style;
-module.exports.Class = YModal;
+    unlockBody(){
+        this.body.style.overflow = 'visible';
+    }
+});
+
+YModal.Style = Style;
+YModal.Class = YModal;
+
+export default YModal;
