@@ -7,22 +7,11 @@ const YModal = React.createClass({
 
     getInitialState(){
         this.wrapperCssClass = b('y-modal', 'wrapper');
+        this.body = document.body;
 
         return {
             visible: false
         };
-    },
-
-    componentDidMount(){
-        this.body = document.body;
-    },
-
-    componentWillUpdate(nextProps, nextState){
-        if (nextState.visible === true) {
-            this.lockBody()
-        } else {
-            this.unlockBody();
-        }
     },
 
     show(){
@@ -39,26 +28,8 @@ const YModal = React.createClass({
     },
 
     unlockBody(){
-        if (window.TransitionEvent){
-            //https://github.com/facebook/react/issues/2187
-            this.getDOMNode().addEventListener('transitionend', function(e){
-                var classList = e.target.className.split(' ');
-                if (classList.indexOf('y-modal') === -1) return;
-
-                if (document.defaultView.getComputedStyle(this.getDOMNode(), null).getPropertyValue('visibility') === 'hidden') {
-                    this.clearBody();
-                }
-            }.bind(this), false);
-        } else {
-            this.clearBody();
-        }
-
-    },
-
-    clearBody(){
         this.body.style.paddingRight = 0;
         this.body.style.overflow = 'visible';
-        this.getDOMNode().removeEventListener('transitionend', null, false);
     },
 
     getScrollWidth(){
@@ -77,6 +48,12 @@ const YModal = React.createClass({
             theme: this.props.theme || 'normal',
             visible: this.state.visible
         });
+
+        if (this.state.visible) {
+            this.lockBody();
+        } else {
+            this.unlockBody();
+        }
 
         return (
             <div className={classes}>

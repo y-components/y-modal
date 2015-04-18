@@ -24,6 +24,11 @@
     bottom: 0;
     left: 0;
 
+    overflow: hidden;
+}
+
+.y-modal_visible .y-modal__wrapper
+{
     overflow: auto;
 
     -webkit-overflow-scrolling: touch;
