@@ -17,13 +17,19 @@ const YModal = React.createClass({
         this.body = document.body;
     },
 
+    componentWillUpdate(nextProps, nextState){
+        if (nextState.visible === true) {
+            this.lockBody();
+        } else {
+            this.unlockBody();
+        }
+    },
+
     show(){
-        this.lockBody();
         this.setState({ visible: true });
     },
 
     hide(){
-        this.unlockBody();
         this.setState({ visible: false });
     },
 
