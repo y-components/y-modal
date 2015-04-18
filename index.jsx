@@ -17,14 +17,6 @@ const YModal = React.createClass({
         this.body = document.body;
     },
 
-    componentWillUpdate(nextProps, nextState){
-        if (nextState.visible === true) {
-            this.lockBody()
-        } else {
-            this.unlockBody();
-        }
-    },
-
     show(){
         this.setState({ visible: true });
     },
@@ -77,6 +69,13 @@ const YModal = React.createClass({
             theme: this.props.theme || 'normal',
             visible: this.state.visible
         });
+        
+        if (this.state.visible) {
+            this.lockBody();
+        } else {
+            this.unlockBody();
+        }
+
 
         return (
             <div className={classes}>
