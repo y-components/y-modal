@@ -19,7 +19,7 @@ const YModal = React.createClass({
 
     componentWillUpdate(nextProps, nextState){
         if (nextState.visible === true) {
-            this.lockBody();
+            this.lockBody()
         } else {
             this.unlockBody();
         }
@@ -34,11 +34,34 @@ const YModal = React.createClass({
     },
 
     lockBody(){
+        this.body.style.paddingRight = this.getScrollWidth() + 'px';
         this.body.style.overflow = 'hidden';
     },
 
     unlockBody(){
+        if (window.TransitionEvent){
+            //https://github.com/facebook/react/issues/2187
+            this.getDOMNode().addEventListener('transitionend', function(e){
+                if (!e.target.classList.contains('y-modal')) return;
+
+                if (document.defaultView.getComputedStyle(this.getDOMNode(), null).getPropertyValue('visibility') === 'hidden') {
+                    this.clearBody();
+                }
+            }.bind(this), false);
+        } else {
+            this.clearBody();
+        }
+
+    },
+
+    clearBody(){
+        this.body.style.paddingRight = 0;
         this.body.style.overflow = 'visible';
+        this.getDOMNode().removeEventListener('transitionend', null, false);
+    },
+
+    getScrollWidth(){
+        return window.innerWidth - document.documentElement.clientWidth;
     },
 
     checkForClose: function(e){

@@ -13,7 +13,7 @@ var App = React.createClass({
                     M size
                 </YButton>
                 <YModal ref="myModal">
-                    <div class="lol">
+                    <div>
                         When a user submits a comment, we will need to refresh the list of comments to include the new one. It makes sense to do all of this logic
                         in CommentBox since CommentBox owns the state that represents the list of comments. When a user submits a comment, we
                         will need to refresh the list of comments to include the new one. It makes sense to do all of this logic in CommentBox
