@@ -35,11 +35,12 @@
       "babel": "npm:babel-core@^5.1.8",
       "css": "github:systemjs/plugin-css@^0.1.6",
       "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
-      "react": "npm:react@^0.12.2"
+      "react": "npm:react@^0.13.1",
+      "y-button": "npm:y-button@^0.0.5"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.0.12",
-      "babel-runtime": "npm:babel-runtime@^5.0.12",
+      "babel": "npm:babel-core@^5.1.10",
+      "babel-runtime": "npm:babel-runtime@^5.1.10",
       "traceur": "github:jmcriffey/bower-traceur@0.0.87",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87",
       "y-button": "npm:y-button@^0.0.5"

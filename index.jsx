@@ -2,46 +2,43 @@ import React from 'react';
 import b from 'b_';
 import Style from './index.css!';
 
-const YModal = React.createClass({
-    displayName: 'y-modal',
+class YModal extends React.Component{
+    constructor(props){
+        super(props);
 
-    getInitialState(){
         this.wrapperCssClass = b('y-modal', 'wrapper');
         this.body = document.body;
-
-        return {
-            visible: false
-        };
-    },
+        this.state = { visible: false };
+    }
 
     show(){
         this.setState({ visible: true });
-    },
+    }
 
     hide(){
         this.setState({ visible: false });
-    },
+    }
 
     lockBody(){
-        this.body.style.paddingRight = this.getScrollWidth() + 'px';
+        this.body.style.paddingRight = YModal.getScrollWidth() + 'px';
         this.body.style.overflow = 'hidden';
-    },
+    }
 
     unlockBody(){
         this.body.style.paddingRight = 0;
         this.body.style.overflow = 'visible';
-    },
+    }
 
-    getScrollWidth(){
+    static getScrollWidth(){
         return window.innerWidth - document.documentElement.clientWidth;
-    },
+    }
 
-    checkForClose: function(e){
+    checkForClose(e){
         var classList = e.target.className.split(' ');
         if (classList.indexOf(this.wrapperCssClass) !== -1) {
             this.hide();
         }
-    },
+    }
 
     render(){
         const classes = b('y-modal', {
@@ -72,7 +69,7 @@ const YModal = React.createClass({
             </div>
         );
     }
-});
+}
 
 YModal.Style = Style;
 YModal.Class = YModal;

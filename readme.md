@@ -8,6 +8,23 @@ __Notice:__ Demo files are not bundled or minified - so first load will be slow.
 
 ## Development
 
+```json
+System.config({
+  "transpiler": "babel",
+  "babelOptions": {
+    "blacklist": [],
+    "optional": [
+      "runtime"
+    ]
+  },
+  "paths": {
+    "*": "*.js",
+    "github:*": "jspm_packages/github/*.js",
+    "npm:*": "jspm_packages/npm/*.js"
+  }
+});
+```
+
 ```bash
 npm install jspm http-server -g
 
