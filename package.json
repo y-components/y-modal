@@ -1,6 +1,6 @@
 {
   "name": "y-modal",
-  "version": "0.0.4",
+  "version": "1.0.1",
   "description": "y-component button",
   "scripts": {
     "serve": "http-server -p 8080 -c-1"
