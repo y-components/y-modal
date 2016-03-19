@@ -80,7 +80,7 @@
     background: #fff;
 }
 
-.y-modal__content_visible
+.y-modal_visible .y-modal__content
 {
     transform: scale(1);
     -webkit-animation: toggle 0.2s;

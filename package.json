@@ -34,7 +34,7 @@
       "b_": "npm:b_@^1.3.0",
       "babel": "npm:babel-core@^5.1.8",
       "css": "github:systemjs/plugin-css@^0.1.6",
-      "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
+      "jsx": "github:floatdrop/plugin-jsx@^1.2.1",
       "react": "npm:react@^0.12.2"
     },
     "devDependencies": {
